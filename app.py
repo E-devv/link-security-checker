@@ -1,7 +1,7 @@
 import os
 import base64
 import requests
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,6 +10,10 @@ app = Flask(__name__)
 
 VT_API_KEY = os.getenv("VT_API_KEY")
 VT_API_URL = "https://www.virustotal.com/api/v3/urls"
+
+@app.route("/")
+def index():
+    return render_template("index.html")
 
 @app.route("/api/scan", methods=["POST"])
 def scan_url():
