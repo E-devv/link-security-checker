@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-g">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThreatIntel Link Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>ThreatIntel Link Scanner</h1>
+        <div class="input-container">
+            <input type="text" id="url-input" placeholder="Enter URL to scan">
+            <button id="scan-button">Scan Link</button>
+        </div>
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+        </div>
+        <div id="results-container" class="hidden">
+            <div id="result-card" class="card">
+                <p id="result-message"></p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
