@@ -36,21 +36,16 @@ document.addEventListener('DOMContentLoaded', () => {
             loading.classList.add('hidden');
             resultsContainer.classList.remove('hidden');
 
-            let message = `Status: ${data.status}`;
             if (data.status === 'DANGER') {
                 resultCard.className = 'card danger';
-                message = `This link is potentially dangerous. ${data.malicious_count} security vendors flagged this URL as malicious.`;
-            } else if (data.status === 'WARNING') {
+            } else if (data.status === 'WARNING' || data.status === 'UNKNOWN') {
                 resultCard.className = 'card warning';
-                message = `This link is suspicious. Proceed with caution.`;
             } else if (data.status === 'SAFE') {
                 resultCard.className = 'card safe';
-                message = `This link appears to be safe.`;
             } else {
-                resultCard.className = 'card warning'; // Default to warning for unknown statuses
-                message = data.message || 'Could not determine the status of the link.';
+                resultCard.className = 'card warning';
             }
-            resultMessage.textContent = message;
+            resultMessage.textContent = data.message;
         })
         .catch(error => {
             loading.classList.add('hidden');
